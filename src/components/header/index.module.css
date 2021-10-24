@@ -1,0 +1,23 @@
+.header {
+  height: 80px;
+  background-color: #5e35b1;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: space-between;
+  /*border-bottom-left-radius: 5px;*/
+  /*border-bottom-right-radius: 5px;*/
+  color: white;
+
+  }
+
+.page_name {
+  font-size: 25px;
+  }
+
+.icons {
+  display: flex;
+  align-items: center;
+  font-size: 35px
+  }
