@@ -1,12 +1,5 @@
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import PersonIcon from '@mui/icons-material/Person';
-import ListItemText from '@mui/material/ListItemText';
-import AddIcon from '@mui/icons-material/Add';
 import * as React from 'react';
 
 import {Box, Button, Form, FormField, Grommet, Text, TextInput} from 'grommet';
@@ -21,11 +14,11 @@ const customTheme = deepMerge(grommet, {
   },
 });
 
-function SimpleDialog(props) {
-  const {onClose, selectedValue, open} = props;
+function AccountModal(props) {
+  const {onClose, open} = props;
 
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose();
   };
 
   return (
@@ -64,4 +57,4 @@ function SimpleDialog(props) {
   );
 }
 
-export default SimpleDialog;
+export default AccountModal;

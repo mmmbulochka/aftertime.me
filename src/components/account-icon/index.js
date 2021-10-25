@@ -1,16 +1,16 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import style from '../header-modal/index.module.css';
-import SimpleDialog from '../simple-dialog';
+import style from './/index.module.css';
+import AccountModal from '../account-modal';
 
-SimpleDialog.propTypes = {
+AccountModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default function SimpleDialogDemo() {
+function AccountIcon() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -26,7 +26,9 @@ export default function SimpleDialogDemo() {
       <div className={style.icons}>
         <AccountCircleIcon fontSize={'inherit'} onClick={handleClickOpen} />
       </div>
-      <SimpleDialog open={open} onClose={handleClose} />
+      <AccountModal open={open} onClose={handleClose} />
     </div>
   );
 }
+
+export default AccountIcon;

@@ -4,14 +4,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import Link from 'next/link';
-import SimpleDialogDemo from '../header-modal';
+import SimpleDialogDemo from '../account-icon';
 
 function Header() {
   return (
     <div className={style.header}>
       <IconButton className={style.icons} color='inherit'>
         <Link href={'/information'}>
-          <InfoIcon fontSize={'inherit'} />
+          <a>
+            <InfoIcon fontSize={'inherit'} />
+          </a>
         </Link>
       </IconButton>
       <Link href={'/'}>
@@ -19,7 +21,9 @@ function Header() {
       </Link>
       <IconButton color='inherit'>
         <Link href={''}>
-          <SimpleDialogDemo />
+          <a>
+            <SimpleDialogDemo />
+          </a>
         </Link>
       </IconButton>
     </div>

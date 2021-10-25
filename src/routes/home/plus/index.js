@@ -1,10 +1,9 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import style from '../plus/index.module.css';
+import PlusModal from '../plus-modal';
 
 import * as React from 'react';
 import {Button} from 'grommet';
-import {Box, Modal, Typography} from '@mui/material';
-
 function Plus() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -15,6 +14,7 @@ function Plus() {
       <Button>
         <AddCircleIcon className={style.addIcon} onClick={handleOpen} />
       </Button>
+      <PlusModal open={open} onClose={handleClose} />
     </div>
   );
 }
