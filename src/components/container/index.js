@@ -1,9 +1,9 @@
 import style from '../container/index.module.css';
 
-function Container() {
+function Container(props) {
   return (
     <div className={style.container}>
-      <div className={style.container_content}>In developing...</div>
+      <div className={style.container_content}>Message is: {props.message}</div>
     </div>
   );
 }

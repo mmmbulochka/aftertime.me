@@ -1,6 +1,1 @@
-function Sasha() {
-  return <div>Привет Саша!!!!</div>;
-  //:)))))))))))))))))))))))))))))
-}
-
-export default Sasha;
+const url = 'https://jsonplaceholder.typicode.com/posts/1';

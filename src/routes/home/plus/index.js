@@ -4,7 +4,7 @@ import PlusModal from '../plus-modal';
 
 import * as React from 'react';
 import {Button} from 'grommet';
-function Plus() {
+function Plus(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -14,7 +14,12 @@ function Plus() {
       <Button>
         <AddCircleIcon className={style.addIcon} onClick={handleOpen} />
       </Button>
-      <PlusModal open={open} onClose={handleClose} />
+      <PlusModal
+        message={props.message}
+        setMessage={props.setMessage}
+        open={open}
+        onClose={handleClose}
+      />
     </div>
   );
 }
