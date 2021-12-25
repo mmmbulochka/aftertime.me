@@ -2,18 +2,6 @@ import * as React from 'react';
 import DialogTitle from '@mui/material/DialogTitle';
 import {Box, Button, Form, FormField, Grommet, Text, TextInput} from 'grommet';
 import Dialog from '@mui/material/Dialog';
-import {grommet} from 'grommet/themes';
-import {deepMerge} from 'grommet/utils';
-import {TextField} from '@mui/material';
-import {useState} from 'react';
-
-const customTheme = deepMerge(grommet, {
-  formField: {
-    label: {
-      requiredIndicator: true,
-    },
-  },
-});
 
 function PlusModal(props) {
   const {onClose, open} = props;
@@ -29,10 +17,11 @@ function PlusModal(props) {
     console.log('Отправленное имя: ' + props.message);
     e.preventDefault();
   };
+
   return (
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>New message</DialogTitle>
-      <Grommet theme={customTheme}>
+      <Grommet>
         <Box
           align='center'
           pad='large'
@@ -41,22 +30,14 @@ function PlusModal(props) {
           }}
         >
           <Form onSubmit={check}>
-            {/*<TextField*/}
-            {/*  fullWidth*/}
-            {/*  label='fullWidth'*/}
-            {/*  id='fullWidth'*/}
-            {/*  onChange={handleChange}*/}
-            {/*  value={message}*/}
-            {/*/>*/}
-
             <input
               type='text'
               name='name'
               onChange={handleChange}
               value={props.message}
+              onSubmit={handleClose}
             />
-
-            <input type='submit' value='Отправить' />
+            <input type='submit' value='Отправить' onClick={handleClose} />
           </Form>
         </Box>
       </Grommet>
