@@ -6,10 +6,7 @@ function Home() {
   return (
     <div>
       <Container message={message} />
-      <Container />
-      <Container />
-      <Container />
-      <Container />
+
       <Plus message={message} setMessage={setMessage} />
     </div>
   );
