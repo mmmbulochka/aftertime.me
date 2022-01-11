@@ -1,7 +1,6 @@
 import style from './index.module.css';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import InfoIcon from '@mui/icons-material/Info';
 import Link from 'next/link';
 import SimpleDialogDemo from '../account-icon';
@@ -20,7 +19,7 @@ function Header() {
         <a className={style.page_name}>aftertime.me</a>
       </Link>
       <IconButton color='inherit'>
-        <Link href={''}>
+        <Link href={'/'}>
           <a>
             <SimpleDialogDemo />
           </a>
