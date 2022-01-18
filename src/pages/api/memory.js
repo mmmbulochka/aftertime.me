@@ -57,6 +57,7 @@ export default nextConnect()
       })
     );
     res.send({
+      id: memory._id,
       ...memory,
       files,
     });

@@ -7,6 +7,7 @@ async function memories(req, res) {
   const preparedMemories = await Promise.all(
     memories.map(async (memory) => {
       return {
+        ...memory,
         id: memory._id,
         files: await Promise.all(
           memory.files.map(async (file) => {
