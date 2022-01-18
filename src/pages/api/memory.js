@@ -30,7 +30,7 @@ export default nextConnect()
           files,
           message: data.message,
           date: data.date,
-          created: Date.now() / 1000,
+          created: Math.round(Date.now() / 1000),
         });
         res.send({id: result.insertedId.toString()});
       });
