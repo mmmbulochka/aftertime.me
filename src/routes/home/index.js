@@ -9,9 +9,8 @@ function Home() {
   return (
     <div>
       {memories.map((memory) => {
-        return <Container message={memory.id} />;
+        return <Container message={memory.id} key={memory.id} />;
       })}
-      {/*<Container message={message} />*/}
 
       <Plus message={message} setMessage={setMessage} />
     </div>

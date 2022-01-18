@@ -5,9 +5,16 @@ import {useState} from 'react';
 
 function PlusModal(props) {
   const [files, setFiles] = useState([]);
+  const [text, setText] = useState('');
+  const [datetime, setDatetime] = useState(0);
   return (
     <Dialog onClose={props.onClose} open={props.open}>
       <DialogTitle>New message</DialogTitle>
+      <input type={'text'} onChange={(e) => setText(e.target.value)} />
+      <input
+        type={'datetime-local'}
+        onChange={(e) => setDatetime(e.target.value)}
+      />
       <input
         type='file'
         multiple={true}
@@ -20,6 +27,11 @@ function PlusModal(props) {
             const file = files[i];
             formData.append(file.name, file);
           }
+          formData.append(
+            'data',
+            JSON.stringify({message: text, date: datetime})
+          );
+
           // files.forEach((file) => formData.append(file.name, file));
           const response = await fetch('/api/memory', {
             method: 'POST',
