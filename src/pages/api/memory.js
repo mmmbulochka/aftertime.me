@@ -7,6 +7,7 @@ export default nextConnect()
   .post(async (req, res) => {
     await mongo.client.connect();
     const files = [];
+    let data = null;
     let memoryId = null;
     if (req.busboy) {
       req.busboy.on('file', (name, file, info) => {
@@ -16,14 +17,20 @@ export default nextConnect()
         files.push(writeStream.id);
         file.pipe(writeStream);
       });
-      req.busboy.on('field', (name, value, info) => {
+      req.busboy.on('field', (name, value) => {
         if (name === 'id') {
           memoryId = value;
+        }
+        if (name === 'data') {
+          data = JSON.parse(value);
         }
       });
       req.busboy.on('finish', async () => {
         const result = await mongo.db.collection('memories').insertOne({
           files,
+          message: data.message,
+          date: data.date,
+          created: Date.now() / 1000,
         });
         res.send({id: result.insertedId.toString()});
       });
