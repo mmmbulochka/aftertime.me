@@ -7,11 +7,20 @@ function Home() {
   const [message, setMessage] = useState('hih');
   const memories = useMemories();
   return (
-    <div>
-      {memories.map((memory) => {
-        return <Container message={memory.id} key={memory.id} />;
-      })}
-
+    <div style={{display: 'flex'}}>
+      <div
+        style={{
+          display: 'flex',
+          gap: 40,
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          marginTop: 40,
+        }}
+      >
+        {memories.map((memory) => {
+          return <Container memory={memory} key={memory.id} />;
+        })}
+      </div>
       <Plus message={message} setMessage={setMessage} />
     </div>
   );

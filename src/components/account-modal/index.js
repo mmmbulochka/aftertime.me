@@ -23,7 +23,7 @@ function AccountModal(props) {
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>JOPA</DialogTitle>
+      <DialogTitle>IM USELESS</DialogTitle>
       <Grommet theme={customTheme}>
         <Box align='center' pad='large'>
           <Form>

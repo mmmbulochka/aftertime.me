@@ -7,13 +7,14 @@ function PlusModal(props) {
   const [files, setFiles] = useState([]);
   const [text, setText] = useState('');
   const [datetime, setDatetime] = useState(0);
+  console.log(datetime);
   return (
     <Dialog onClose={props.onClose} open={props.open}>
       <DialogTitle>New message</DialogTitle>
       <input type={'text'} onChange={(e) => setText(e.target.value)} />
       <input
         type={'datetime-local'}
-        onChange={(e) => setDatetime(e.target.value)}
+        onChange={(e) => setDatetime(+new Date(e.target.value))}
       />
       <input
         type='file'
@@ -29,7 +30,7 @@ function PlusModal(props) {
           }
           formData.append(
             'data',
-            JSON.stringify({message: text, date: datetime})
+            JSON.stringify({message: text, date: datetime / 1000})
           );
 
           // files.forEach((file) => formData.append(file.name, file));

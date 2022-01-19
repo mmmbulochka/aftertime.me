@@ -1,6 +1,6 @@
 .header {
-  height: 80px;
-  background-color: #5e35b1;
+  height: 70px;
+  background-color: #b0bec5;
   display: flex;
   align-items: center;
   padding-left: 30px;
@@ -8,8 +8,12 @@
   justify-content: space-between;
   /*border-bottom-left-radius: 5px;*/
   /*border-bottom-right-radius: 5px;*/
-  color: white;
+  color: #000a12;
+  }
 
+.upper {
+  height: 10px;
+  background-color: #808e95;;
   }
 
 .page_name {

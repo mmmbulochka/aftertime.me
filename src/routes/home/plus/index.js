@@ -11,9 +11,9 @@ function Plus(props) {
 
   return (
     <div className={style.footer}>
-      <Button>
+      <div className={style.plus_container}>
         <AddCircleIcon className={style.addIcon} onClick={handleOpen} />
-      </Button>
+      </div>
       <PlusModal
         message={props.message}
         setMessage={props.setMessage}
