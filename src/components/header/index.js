@@ -10,9 +10,9 @@ function Header() {
     <div>
       <div className={style.upper} />
       <div className={style.header}>
-        <IconButton className={style.icons} color='inherit'>
+        <IconButton color='inherit'>
           <Link href={'/information'}>
-            <a>
+            <a className={style.icons}>
               <InfoIcon fontSize={'inherit'} />
             </a>
           </Link>

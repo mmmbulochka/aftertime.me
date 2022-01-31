@@ -2,10 +2,17 @@ import Container from 'src/components/container';
 import Plus from './plus';
 import {useState} from 'react';
 import useMemories from '../../hooks/useMemories';
+import {useEffect} from 'react';
+import {memories} from 'src/stores';
+import {observer} from 'mobx-react-lite';
 
 function Home() {
   const [message, setMessage] = useState('hih');
-  const memories = useMemories();
+  // const memories = useMemories();
+  useEffect(() => {
+    memories.loadMemories();
+  }, []);
+
   return (
     <div style={{display: 'flex'}}>
       <div
@@ -15,9 +22,11 @@ function Home() {
           flexWrap: 'wrap',
           justifyContent: 'center',
           marginTop: 40,
+          paddingLeft: 40,
+          paddingRight: 40,
         }}
       >
-        {memories.map((memory) => {
+        {memories.memories.map((memory) => {
           return <Container memory={memory} key={memory.id} />;
         })}
       </div>
@@ -25,4 +34,4 @@ function Home() {
     </div>
   );
 }
-export default Home;
+export default observer(Home);

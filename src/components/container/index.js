@@ -4,20 +4,16 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import dayjs from 'dayjs';
 
 export default function MediaControlCard(props) {
-  const theme = useTheme();
-
   return (
     <Card
       sx={{
         display: 'flex',
         width: 400,
+        height: 160,
         boxShadow: '2px 5px 19px 2px rgba(219, 224, 229, 0.2)',
         borderRadius: 0,
       }}
@@ -32,14 +28,15 @@ export default function MediaControlCard(props) {
             color='text.secondary'
             component='div'
           >
-            Mac Miller
+            {dayjs(props.memory.created * 1000).format('DD/MM/YYYY')} -{' '}
+            {dayjs(props.memory.date * 1000).format('DD/MM/YYYY')}
           </Typography>
         </CardContent>
       </Box>
       <CardMedia
         component='img'
         sx={{width: 151, marginLeft: 'auto'}}
-        image='https://cs10.pikabu.ru/post_img/big/2020/12/03/10/160701789716438111.png'
+        image={props.memory.files[0]}
         alt='Live from space album cover'
       />
     </Card>
