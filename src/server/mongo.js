@@ -1,11 +1,14 @@
 import {MongoClient, GridFSBucket} from 'mongodb';
 import * as mongodb from 'mongodb';
 
-const client = new MongoClient(
-  `mongodb+srv://app:${process.env.MONGO_PASSWORD}@aftertime.oe6rw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-);
+async function getMongo() {
+    const client = new MongoClient(
+        `mongodb+srv://app:${process.env.MONGO_PASSWORD}@aftertime.oe6rw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+    );
+    await client.connect()
+    const db = await client.db('aftertime')
+    const gridFs = new GridFSBucket(db, {bucketName: 'files'});
+    return {client, db, gridFs}
+}
 
-export const db = client.db('aftertime');
-export const gridFs = new GridFSBucket(db, {bucketName: 'files'});
-
-export default {client, db, gridFs, mongodb};
+export default {getMongo, mongodb};
