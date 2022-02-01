@@ -33,6 +33,7 @@ export default nextConnect()
         const result = await db.collection('memories').insertOne({
           files: files.filter(({name}) => name !== 'icon').map(({id}) => id),
             icon: files.filter(({name}) => name === 'icon')[0].id,
+          title: data.title,
           message: data.message,
           date: data.date,
           created: Math.round(Date.now() / 1000),
