@@ -1,8 +1,9 @@
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+// import AddCircleIcon from '@mui/icons-material/AddCircle';
 import style from '../plus/index.module.css';
 import PlusModal from '../plus-modal';
 import * as React from 'react';
-import {Button} from 'grommet';
+import PlusIcon from 'baseui/icon/plus';
+import {Button} from 'baseui/button';
 
 function Plus(props) {
   const [open, setOpen] = React.useState(false);
@@ -12,9 +13,7 @@ function Plus(props) {
   return (
     <div className={style.footer}>
       <Button>
-        <div className={style.addIcon}>
-          <AddCircleIcon className={style.addIcon} onClick={handleOpen} />
-        </div>
+        <PlusIcon className={style.icon} size={30} onClick={handleOpen} />
       </Button>
       <PlusModal
         message={props.message}

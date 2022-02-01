@@ -16,6 +16,7 @@ import {Input} from 'baseui/input';
 import {KIND as ButtonKind} from 'baseui/button';
 
 import {styled} from 'baseui';
+import {FormControl} from 'baseui/form-control';
 
 function PlusModal(props) {
   const [files, setFiles] = useState([]);
@@ -30,95 +31,55 @@ function PlusModal(props) {
             marginTop: 10,
           }}
         >
-          {/*<h3>Описание воспоминания</h3>*/}
-          <Input
-            overrides={{
-              Root: {
-                style: () => ({
-                  marginTop: '10px',
-                }),
-              },
-            }}
-            placeholder={'Описание воспоминания'}
-            size={SIZE.mini}
-            type={'text'}
-            border-color={'blue'}
-            onChange={(e) => setText(e.target.value)}
-          />
+          <FormControl label={() => 'Описание воспоминания'}>
+            <Input
+              type={'text'}
+              border-color={'blue'}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </FormControl>
         </div>
         <div
           style={{
             marginTop: 10,
           }}
         >
-          {/*<h3>Письмо в будущее</h3>*/}
-          <Input
-            overrides={{
-              Root: {
-                style: () => ({
-                  marginTop: '10px',
-                }),
-              },
-            }}
-            placeholder={'Письмо в будущее'}
-            type={'text'}
-            // onChange={(e) => setLetter(e.target.value)}
-          />
+          <FormControl label={() => 'Письмо в будущее'}>
+            <Input
+              type={'text'}
+              // onChange={(e) => setLetter(e.target.value)}
+            />
+          </FormControl>
         </div>
         <div
           style={{
             marginTop: 10,
           }}
         >
-          <h3>Дата получения</h3>
-          <Input
-            overrides={{
-              Root: {
-                style: () => ({
-                  marginTop: '10px',
-                }),
-              },
-            }}
-            type={'date'}
-            onChange={(e) => setDatetime(+new Date(e.target.value))}
-          />
+          <FormControl label={() => 'Дата получения'}>
+            <Input
+              type={'date'}
+              onChange={(e) => setDatetime(+new Date(e.target.value))}
+            />
+          </FormControl>
         </div>
         <div
           style={{
             marginTop: 10,
           }}
         >
-          <h3>Заставка</h3>
-          <Input
-            overrides={{
-              Root: {
-                style: () => ({
-                  marginTop: '10px',
-                }),
-              },
-            }}
-            type='file'
-            multiple={false}
-            onChange={(e) => setFiles(e.target.files)}
-          />
+          <FormControl label={() => 'Заставка'}>
+            <Input type='file' onChange={(e) => setFiles(e.target.files)} />
+          </FormControl>
         </div>
         <div
           style={{
             marginTop: 10,
           }}
         >
-          <h3>Файлы в будущее</h3>
-          <Input
-            overrides={{
-              Root: {
-                style: () => ({
-                  marginTop: '10px',
-                }),
-              },
-            }}
-            type='file'
-            multiple={true}
-          />
+          <FormControl label={() => 'Файлы в будущее'}>
+            <Input type='file' multiple={true} />
+          </FormControl>
         </div>
       </ModalBody>
       <ModalFooter>
