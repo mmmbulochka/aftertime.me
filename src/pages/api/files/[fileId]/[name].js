@@ -1,11 +1,14 @@
 import mongo from '../../../../server/mongo';
 
 async function file(req, res) {
-  await mongo.client.connect();
+  const {client, gridFs} = await mongo.getMongo();
 
-  mongo.gridFs
+  gridFs
     .openDownloadStream(new mongo.mongodb.ObjectId(req.query.fileId))
-    .pipe(res);
+    .pipe(res)
+      .on('close', () => {
+        client.close()
+      });
 }
 
 export default file;
