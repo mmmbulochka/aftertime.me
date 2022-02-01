@@ -21,7 +21,7 @@ export default function MediaControlCard(props) {
       <Box sx={{display: 'flex', flexDirection: 'column'}}>
         <CardContent sx={{flex: '1 0 auto'}}>
           <Typography component='div' variant='h5'>
-            {props.memory.message}
+            {props.memory.title}
           </Typography>
           <Typography
             variant='subtitle1'
@@ -36,7 +36,7 @@ export default function MediaControlCard(props) {
       <CardMedia
         component='img'
         sx={{width: 151, marginLeft: 'auto'}}
-        image={props.memory.files[0]}
+        image={props.memory.icon}
         alt='Live from space album cover'
       />
     </Card>
