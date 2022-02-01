@@ -5,7 +5,7 @@ import mongo from '../../server/mongo';
 export default nextConnect()
   .use(connectBusboy())
   .post(async (req, res) => {
-    const {db, gridFs, client} = mongo.getMongo()
+    const {db, gridFs, client} = await mongo.getMongo()
     const filesPromises =  []
     let data = null;
     let memoryId = null;

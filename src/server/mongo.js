@@ -7,7 +7,7 @@ async function getMongo() {
     );
     await client.connect()
     const db = await client.db('aftertime')
-    const gridFs = new GridFSBucket(db, {bucketName: 'files'});
+    const gridFs = new GridFSBucket(db, {bucketName: 'memories'});
     return {client, db, gridFs}
 }
 
