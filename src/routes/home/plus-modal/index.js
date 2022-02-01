@@ -1,8 +1,7 @@
 import * as React from 'react';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
 import {useState} from 'react';
 import {memories} from 'src/stores';
+
 import {
   Modal,
   ModalHeader,
@@ -19,9 +18,12 @@ import {styled} from 'baseui';
 import {FormControl} from 'baseui/form-control';
 
 function PlusModal(props) {
-  const [files, setFiles] = useState([]);
-  const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
   const [datetime, setDatetime] = useState(0);
+  const [icon, setIcon] = useState(null);
+  const [files, setFiles] = useState([]);
+
   return (
     <Modal onClose={props.onClose} isOpen={props.open}>
       <ModalHeader>Создание воспоминания</ModalHeader>
@@ -35,7 +37,7 @@ function PlusModal(props) {
             <Input
               type={'text'}
               border-color={'blue'}
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </FormControl>
         </div>
@@ -45,10 +47,7 @@ function PlusModal(props) {
           }}
         >
           <FormControl label={() => 'Письмо в будущее'}>
-            <Input
-              type={'text'}
-              // onChange={(e) => setLetter(e.target.value)}
-            />
+            <Input type={'text'} onChange={(e) => setMessage(e.target.value)} />
           </FormControl>
         </div>
         <div
@@ -69,7 +68,7 @@ function PlusModal(props) {
           }}
         >
           <FormControl label={() => 'Заставка'}>
-            <Input type='file' onChange={(e) => setFiles(e.target.files)} />
+            <Input type='file' onChange={(e) => setIcon(e.target.files[0])} />
           </FormControl>
         </div>
         <div
@@ -78,7 +77,15 @@ function PlusModal(props) {
           }}
         >
           <FormControl label={() => 'Файлы в будущее'}>
-            <Input type='file' multiple={true} />
+            <Input
+              inputRef={(ref) => {
+                if (ref) {
+                  ref.multiple = true;
+                }
+              }}
+              type={'file'}
+              onChange={(event) => setFiles(event.target.files)}
+            />
           </FormControl>
         </div>
       </ModalBody>
@@ -90,9 +97,10 @@ function PlusModal(props) {
               const file = files[i];
               formData.append(file.name, file);
             }
+            formData.append('icon', icon);
             formData.append(
               'data',
-              JSON.stringify({message: text, date: datetime / 1000})
+              JSON.stringify({message, title, date: datetime / 1000})
             );
             props.onClose();
             const response = await fetch('/api/memory', {
