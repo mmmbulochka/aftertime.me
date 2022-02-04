@@ -8,13 +8,9 @@ import {
   ModalBody,
   ModalFooter,
   ModalButton,
-  SIZE,
-  ROLE,
 } from 'baseui/modal';
 import {Input} from 'baseui/input';
-import {KIND as ButtonKind} from 'baseui/button';
 
-import {styled} from 'baseui';
 import {FormControl} from 'baseui/form-control';
 
 function PlusModal(props) {
