@@ -11,7 +11,13 @@ import {useState} from 'react';
 
 export default function MediaControlCard(props) {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    if (dayjs() <= dayjs(props.memory.created)) {
+      setOpen(true);
+    }
+  };
+  console.log(dayjs().format('x'));
+  console.log(dayjs(props.memory.date * 1000));
   const handleClose = () => setOpen(false);
   return (
     <div>

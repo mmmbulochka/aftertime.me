@@ -1,6 +1,6 @@
 .header {
   height: 70px;
-  background-color: #b0bec5;
+  background-color: #c5cae9;
   display: flex;
   align-items: center;
   padding-left: 30px;
@@ -13,7 +13,7 @@
 
 .upper {
   height: 10px;
-  background-color: #808e95;;
+  background-color: #9499b7;;
   }
 
 .page_name {
