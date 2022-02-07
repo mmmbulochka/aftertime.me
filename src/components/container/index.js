@@ -24,8 +24,8 @@ export default function MediaControlCard(props) {
         onClick={handleOpen}
         sx={{
           display: 'flex',
-          width: 400,
-          height: 160,
+            width: 370,
+            height: 160,
           boxShadow: '2px 5px 19px 2px rgba(219, 224, 229, 0.2)',
           borderRadius: 0,
         }}
