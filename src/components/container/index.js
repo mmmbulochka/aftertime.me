@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,11 +6,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import dayjs from 'dayjs';
 import ContainerModal from '../container-modal';
-import {useState} from 'react';
 
 export default function MediaControlCard(props) {
   const [open, setOpen] = React.useState(false);
-  const isReady = Date.now() >= props.memory.date * 1000
+  const isReady = Date.now() >= props.memory.date * 1000;
   const handleOpen = () => {
     if (isReady) {
       setOpen(true);
@@ -24,8 +22,8 @@ export default function MediaControlCard(props) {
         onClick={handleOpen}
         sx={{
           display: 'flex',
-            width: 370,
-            height: 160,
+          width: 370,
+          height: 160,
           boxShadow: '2px 5px 19px 2px rgba(219, 224, 229, 0.2)',
           borderRadius: 0,
         }}
@@ -44,15 +42,16 @@ export default function MediaControlCard(props) {
               {dayjs(props.memory.date * 1000).format('DD/MM/YYYY')}
             </Typography>
           </CardContent>
-            <div style={{
-                borderRadius: '100%',
-                backgroundColor: isReady ? '#DCEDC8' : '#FFCDD2',
-                height: 20,
-                width: 20,
-                marginLeft: 10,
-                marginBottom: 10
-            }}>
-            </div>
+          <div
+            style={{
+              borderRadius: '100%',
+              backgroundColor: isReady ? '#DCEDC8' : '#FFCDD2',
+              height: 20,
+              width: 20,
+              marginLeft: 10,
+              marginBottom: 10,
+            }}
+          />
         </Box>
 
         <CardMedia
@@ -61,9 +60,8 @@ export default function MediaControlCard(props) {
           image={props.memory.icon}
           alt='Live from space album cover'
         />
-
       </Card>
-      <ContainerModal memory={props.memory} open={open} onClose={handleClose} />
+      <ContainerModal memory={props.memory} open={open} onClose={handleClose}/>
     </div>
   );
 }

@@ -6,22 +6,20 @@
   padding-left: 30px;
   padding-right: 30px;
   justify-content: space-between;
-  /*border-bottom-left-radius: 5px;*/
-  /*border-bottom-right-radius: 5px;*/
   color: #000a12;
-  }
+}
 
 .upper {
   height: 10px;
-  background-color: #9499b7;;
-  }
+  background-color: #9499b7;
+}
 
 .page_name {
   font-size: 25px;
-  }
+}
 
 .icons {
   display: flex;
   align-items: center;
-  font-size: 35px
-  }
+  font-size: 35px;
+}

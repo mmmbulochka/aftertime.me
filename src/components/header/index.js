@@ -3,7 +3,6 @@ import IconButton from '@mui/material/IconButton';
 
 import InfoIcon from '@mui/icons-material/Info';
 import Link from 'next/link';
-import SimpleDialogDemo from '../account-icon';
 
 function Header() {
   return (
@@ -20,9 +19,7 @@ function Header() {
         <Link href={'/'}>
           <a className={style.page_name}>aftertime.me</a>
         </Link>
-        <div>
-
-        </div>
+        <div></div>
         {/*<IconButton color='inherit'>*/}
         {/*  <Link href={'/'}>*/}
         {/*    <a>*/}

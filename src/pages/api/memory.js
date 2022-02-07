@@ -5,8 +5,8 @@ import mongo from '../../server/mongo';
 export default nextConnect()
   .use(connectBusboy())
   .post(async (req, res) => {
-    const {db, gridFs, client} = await mongo.getMongo()
-    const filesPromises =  []
+    const {db, gridFs, client} = await mongo.getMongo();
+    const filesPromises = [];
     let data = null;
     let memoryId = null;
     if (req.busboy) {
@@ -15,10 +15,14 @@ export default nextConnect()
           contentType: info.mimeType,
         });
         file.pipe(writeStream);
-        filesPromises.push(new Promise((resolve, reject) => {
-            writeStream.on('finish', () => resolve({id: writeStream.id, name: name}))
-            writeStream.on('error', (error) => reject(error))
-        }))
+        filesPromises.push(
+          new Promise((resolve, reject) => {
+            writeStream.on('finish', () =>
+              resolve({id: writeStream.id, name: name})
+            );
+            writeStream.on('error', (error) => reject(error));
+          })
+        );
       });
       req.busboy.on('field', (name, value) => {
         if (name === 'id') {
@@ -29,23 +33,23 @@ export default nextConnect()
         }
       });
       req.busboy.on('close', async () => {
-          const files = await Promise.all(filesPromises)
+        const files = await Promise.all(filesPromises);
         const result = await db.collection('memories').insertOne({
           files: files.filter(({name}) => name !== 'icon').map(({id}) => id),
-            icon: files.filter(({name}) => name === 'icon')[0].id,
+          icon: files.filter(({name}) => name === 'icon')[0].id,
           title: data.title,
           message: data.message,
           date: data.date,
           created: Math.round(Date.now() / 1000),
         });
         res.send({id: result.insertedId.toString()});
-        await client.close()
+        await client.close();
       });
       req.pipe(req.busboy);
     }
   })
   .get(async (req, res) => {
-    const {db, gridFs, client} = mongo.getMongo()
+    const {db, gridFs, client} = mongo.getMongo();
     const memory = await db.collection('memories').findOne({
       _id: new mongo.mongodb.ObjectId(req.query.memory),
     });
@@ -63,20 +67,22 @@ export default nextConnect()
         }`;
       })
     );
-    const icon = (await gridFs
-      .find({
+    const icon = (
+      await gridFs
+        .find({
           _id: memory.icon,
-      })
-      .toArray())[0]
+        })
+        .toArray()
+    )[0];
     res.send({
       id: memory._id,
       ...memory,
       files,
       icon: `http://${req.headers.host}/api/files/${memory.icon.toString()}/${
         icon.filename
-      }`
+      }`,
     });
-    await client.close()
+    await client.close();
   });
 
 export const config = {

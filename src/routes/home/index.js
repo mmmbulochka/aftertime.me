@@ -1,14 +1,12 @@
 import Container from 'src/components/container';
 import Plus from './plus';
 import {useState} from 'react';
-import useMemories from '../../hooks/useMemories';
 import {useEffect} from 'react';
 import {memories} from 'src/stores';
 import {observer} from 'mobx-react-lite';
 
 function Home() {
   const [message, setMessage] = useState('hih');
-  // const memories = useMemories();
   useEffect(() => {
     memories.loadMemories();
   }, []);

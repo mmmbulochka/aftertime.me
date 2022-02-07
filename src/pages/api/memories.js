@@ -6,9 +6,13 @@ async function memories(req, res) {
 
   const preparedMemories = await Promise.all(
     memories.map(async (memory) => {
-      const icon = (await gridFs.find({
-        _id: memory.icon
-      }).toArray())[0]
+      const icon = (
+        await gridFs
+          .find({
+            _id: memory.icon,
+          })
+          .toArray()
+      )[0];
       return {
         ...memory,
         id: memory._id,
@@ -34,7 +38,7 @@ async function memories(req, res) {
   );
 
   res.send(preparedMemories);
-  await client.close()
+  await client.close();
 }
 
 export default memories;

@@ -6,9 +6,9 @@ async function file(req, res) {
   gridFs
     .openDownloadStream(new mongo.mongodb.ObjectId(req.query.fileId))
     .pipe(res)
-      .on('close', () => {
-        client.close()
-      });
+    .on('close', () => {
+      client.close();
+    });
 }
 
 export default file;
