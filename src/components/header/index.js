@@ -20,13 +20,16 @@ function Header() {
         <Link href={'/'}>
           <a className={style.page_name}>aftertime.me</a>
         </Link>
-        <IconButton color='inherit'>
-          <Link href={'/'}>
-            <a>
-              <SimpleDialogDemo />
-            </a>
-          </Link>
-        </IconButton>
+        <div>
+
+        </div>
+        {/*<IconButton color='inherit'>*/}
+        {/*  <Link href={'/'}>*/}
+        {/*    <a>*/}
+        {/*      <SimpleDialogDemo />*/}
+        {/*    </a>*/}
+        {/*  </Link>*/}
+        {/*</IconButton>*/}
       </div>
     </div>
   );

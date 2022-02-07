@@ -11,13 +11,12 @@ import {useState} from 'react';
 
 export default function MediaControlCard(props) {
   const [open, setOpen] = React.useState(false);
+  const isReady = Date.now() >= props.memory.date * 1000
   const handleOpen = () => {
-    if (dayjs() <= dayjs(props.memory.created)) {
+    if (isReady) {
       setOpen(true);
     }
   };
-  console.log(dayjs().format('x'));
-  console.log(dayjs(props.memory.date * 1000));
   const handleClose = () => setOpen(false);
   return (
     <div>
@@ -45,15 +44,26 @@ export default function MediaControlCard(props) {
               {dayjs(props.memory.date * 1000).format('DD/MM/YYYY')}
             </Typography>
           </CardContent>
+            <div style={{
+                borderRadius: '100%',
+                backgroundColor: isReady ? '#DCEDC8' : '#FFCDD2',
+                height: 20,
+                width: 20,
+                marginLeft: 10,
+                marginBottom: 10
+            }}>
+            </div>
         </Box>
+
         <CardMedia
           component='img'
           sx={{width: 151, marginLeft: 'auto'}}
           image={props.memory.icon}
           alt='Live from space album cover'
         />
+
       </Card>
-      <ContainerModal open={open} onClose={handleClose} />
+      <ContainerModal memory={props.memory} open={open} onClose={handleClose} />
     </div>
   );
 }
