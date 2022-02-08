@@ -1,0 +1,14 @@
+
+.card {
+    background-color: white;
+    display: flex;
+    flex-direction: column-reverse;
+
+
+}
+
+@media (min-width: 500px) {
+    .card {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,11 @@
+@media (min-width: 500px) {
+    .card {
+        flex-direction: row;
+        height: 400px;
+    }
+}
+
+.card {
+    flex-direction: column-reverse;
+    height: 160px;
+}
