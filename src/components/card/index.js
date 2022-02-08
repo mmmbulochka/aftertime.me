@@ -7,7 +7,7 @@ import s from './index.module.css';
 
 function Card(props) {
   return (
-    <div className={s.card}>
+    <div onClick={props.onClick} className={s.card}>
       <div
         style={{
           display: 'flex',

@@ -25,10 +25,10 @@ export default function MediaControlCard(props) {
         flexDirection: 'column',
       }}
     >
-      <Card memory={props.memory} isReady={isReady} />
+      <Card memory={props.memory} isReady={isReady} onClick={handleOpen} />
       {/*<Card*/}
       {/*  className={style.card}*/}
-      {/*  onClick={handleOpen}*/}
+      {/*  /}
       {/*  sx={{*/}
       {/*    display: 'flex',*/}
       {/*    maxWidth: 370,*/}
