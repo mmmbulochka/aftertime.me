@@ -12,8 +12,8 @@ function Plus(props) {
 
   return (
     <div className={style.footer}>
-      <Button>
-        <PlusIcon className={style.icon} size={30} onClick={handleOpen} />
+      <Button onClick={handleOpen}>
+        <PlusIcon className={style.icon} size={30} />
       </Button>
       <PlusModal
         message={props.message}
